@@ -1,0 +1,90 @@
+{% extends "base.html" %} {% block content %}
+<h4>Array de Xml Nombres</h4>
+<div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">textsms</i>
+          <label for="disabled">{{mi_lista_nombres}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+<h4>Array de Xml Apellidos</h4>
+<div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">textsms</i>
+          <label for="disabled">{{mi_lista_apellidos}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4>Array de Xml Sexo</h4>
+  <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">textsms</i>
+            <label for="disabled">{{mi_lista_sexo}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h4>Array de Xml Mascotas</h4>
+    <div class="row">
+        <div class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">textsms</i>
+              <label for="disabled">{{mi_lista_mascota}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4>Array de Xml Correos</h4>
+      <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">textsms</i>
+                <label for="disabled">{{mi_lista_correos}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Nombre" id="Nombre" type="text" class="validate" style="color: black;">
+          <label for="Nombre">Nombre</label>
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Apellidos" id="Apellidos" type="text" style="color: black;" class="validate">
+          <label for="Apellidos">Apellidos</label>
+        </div>
+        <div class="input-field col s6">
+            <input placeholder="Sexo" id="Sexo" type="text" style="color: black;" class="validate">
+            <label for="Sexo">Sexo</label>
+          </div>
+          <div class="input-field col s6">
+            <input placeholder="Mascota" id="Mascota" type="text" style="color: black;" class="validate">
+            <label for="Mascota">Mascota</label>
+          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" placeholder="Email" type="email" style="color: black;" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
+{% endblock content %} {% block js %}
+
+{% endblock js %}
