@@ -9,6 +9,8 @@ from django.conf import settings
 from .views import *
 
 urlpatterns = [
-    path('xml/', vistazo,name="xml"),
+    path('xml/', xml, name="xml")
+    path('creacion/', creacion, name="creacion"),
+    path('lectura/', lectura, name="lectura"),
   
 ]

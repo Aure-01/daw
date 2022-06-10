@@ -31,7 +31,8 @@ urlpatterns = [
     path('login/', login_usuario, name="login"),
     path('registro/', registro, name="registro"),
     path(r'^', include('sml.urls')),
-    path('xml/', vistazo,name="xml"),
+    path('creacion/', creacion, name="creacion"),
+    path('lectura/', lectura, name="lectura"),
 ]
 
 if settings.STATIC_URL.startswith("/"):

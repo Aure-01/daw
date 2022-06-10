@@ -1,32 +1,52 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 import xml.etree.cElementTree as ET
 
-def vistazo(request):
-    template_to_return = 'xml.html'
-    mi_lista_nombres = 'Juan ''Pedro ''Laura ''Carmen ''Susana'
-    mi_lista_apellidos = 'Gonzalez ''Martinez ''Gomez ''Peralta ''Ahumada '
-    mi_lista_sexo = 'Masculino ''Femenino ''Otros '
-    mi_lista_mascota = 'Gato ''Perro ''Perico ''Tortuga ''Peces ''Tiburon '
-    mi_lista_correos = 'omaraurelio1@gmail.com ''omar_aurelio@hotmail.com '
+def creacion(request): 
+    Nombre = request.POST['name']
+    nacionalidad=  request.POST['Nacionalidad']
+    Edad=  request.POST['edad']
+    Direccion=  request.POST['direccion']
+    Telefono=  request.POST['telefono']
 
-    ruta = "/Users/omar_/Desktop/daw/daw/sml/xml/" 
+    if name == '':
+        else if Nacionalidad == '':
+            else if edad == '':
+                else if direccion == '':
+                    else if telefono == '':
+                    ruta = "/Users/omar_/Desktop/daw/daw/sml/xml/" 
+                    root = ET.Element("root")
+                    doc = ET.SubElement(root, "doc")
+
+                    nodo1 = ET.SubElement(doc, "nodo1", name="datos generales")
+                    nodo1.text = "Datos de la persona"
+
+                    ET.SubElement(doc, "nodo1", atributo="name").text = Nombre
+                    ET.SubElement(doc, "nodo1", atributo="Nacionalidad").text = nacionalidad
+                    ET.SubElement(doc, "nodo1", atributo="edad").text = Edad
+                    ET.SubElement(doc, "nodo1", atributo="direccion").text = Direccion
+                    ET.SubElement(doc, "nodo1", atributo="telefono").text = Telefono
+                    
+                    arbol = ET.ElementTree(root)
+                    arbol.write(ruta+ "prueba.xml")
+                    print('Nombre')
+        
+    return render (request, 'xml.html')
+
+def lectura(request):
     root = ET.Element("root")
     doc = ET.SubElement(root, "doc")
-    ET.SubElement(doc,"nodo1", mi_lista_nombres = 'mi_lista_nombres').text= mi_lista_nombres
-    ET.SubElement(doc,"nodo2", mi_lista_apellidos = 'mi_lista_apellidos').text=  mi_lista_apellidos
-    ET.SubElement(doc,"nodo3", mi_lista_sexo = 'mi_lista_sexo').text= mi_lista_sexo
-    ET.SubElement(doc,"nodo4", mi_lista_mascota = ' mi_lista_mascota').text= mi_lista_mascota
-    ET.SubElement(doc,"nodo5", mi_lista_correos = 'mi_lista_correos').text= mi_lista_correos
-    archivo = ET.ElementTree(root)
-    archivo.write(ruta+ "ejemplo.xml")
-    
-    context = {
-        'mi_lista_nombres': mi_lista_nombres,
-        'mi_lista_apellidos': mi_lista_apellidos,
-        'mi_lista_sexo': mi_lista_sexo,
-        'mi_lista_mascota': mi_lista_mascota,
-        'mi_lista_correos': mi_lista_correos
+    ET.SubElement(doc, "nodo1", atributo="name").text = nombres
+    ET.SubElement(doc, "nodo1", atributo="Nacionalidad").text = Nacionalidades
+    ET.SubElement(doc, "nodo1", atributo="edad").text = edades
+    ET.SubElement(doc, "nodo1", atributo="direccion").text = direcciones
+    ET.SubElement(doc, "nodo1", atributo="telefono").text = telefonos
+   
+    context={
+        'nombres' : nombres,
+        'Nacionalidades' : Nacionalidades,
+        'edades' : edades,
+        'direcciones' : direcciones,
+        'telefonos' : telefonos,
     }
-    return render (request, template_to_return, context)
 
+    return render(request, 'xml.html', context)
