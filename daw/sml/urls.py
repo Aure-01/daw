@@ -9,7 +9,7 @@ from django.conf import settings
 from .views import *
 
 urlpatterns = [
-    path('xml/', xml, name="xml")
+    path('sml_vew/', sml_vew, name= "sml_view"),
     path('creacion/', creacion, name="creacion"),
     path('lectura/', lectura, name="lectura"),
   

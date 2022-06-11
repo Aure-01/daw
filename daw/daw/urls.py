@@ -22,7 +22,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
 from .views import *
-from sml.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,9 +29,7 @@ urlpatterns = [
     path('home/',home, name="home"),
     path('login/', login_usuario, name="login"),
     path('registro/', registro, name="registro"),
-    path(r'^', include('sml.urls')),
-    path('creacion/', creacion, name="creacion"),
-    path('lectura/', lectura, name="lectura"),
+    url(r'^', include('sml.urls')),
 ]
 
 if settings.STATIC_URL.startswith("/"):

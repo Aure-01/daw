@@ -1,0 +1,102 @@
+{% extends "base.html" %} {% load static %}
+{% block content %}
+<input type="hidden" id="csrf_token" value="{{ csrf_token }}">
+<style>
+    @media screen and (max-width: 600px) {
+    }
+    .card{
+        display:inline-block;
+    }
+    .card .card-image img{
+        height: 200px;
+    }
+    .card{
+        height: 80px;
+    }
+    .head{
+        font-size:25px;
+    }
+</style>
+    <div class="container">
+        <form class="contacto" >
+            <div class="modal-content">
+                <center><h4 >Contacto</h4></center>
+                <br/>
+                <div class="row">
+                    <div class=" col offset-m2 offset-l3 s12 m12 l6">
+                        {% csrf_token %}
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m8 l12">
+                                <input id="id_name" name="nombre" type="text" value="{{nombre}}" required>   
+                                <label for="id_name">Nombre</label> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m8 l12">
+                            <input id="id_nacionalidad" name="Nacionalidad" type="text" value="{{nacionalidad}}" required>  
+                            <label for="id_nacionalidad">Nacionalidad</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m8 l12">
+                                <input id="id_edad" name="edad" type="number" value="{{edad}}" required>
+                                <label for="id_edad">Edad</label> 
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class="input-field col s12 m8 l12">
+                                <input id="id_direccion" name="direccion" type="text" value="{{direccion}}">
+                                <label for="id_direccion">Direccion</label> 
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m8 l12">
+                                <input id="id_telefono" name="telefono" type="number" value="{{telefono}}">
+                                <label for="id_telefono">Teléfono</label> 
+                            </div>
+                        </div>
+            </div>
+            <div class="modal-footer">
+                <a href="/lectura"class="btn btn-small red">Leer xml</a>
+                <button type="submit" class="btn waves-effect waves-green green">Generar xml</a>
+            </div>
+        </form>
+    <div id="agregarplanta" class="modal modal-small" style="">
+</div>
+{% endblock content%} {% block js %}
+<script type="text/javascript">
+    $('.contacto').submit(function(evento){
+        evento.preventDefault();
+        var formdata=$(this).serialize()
+        agregarplanta(formdata)
+    })
+    function agregarplanta(formData){
+        
+        //$('.materialboxed').materialbox();
+        var csrf_token = $("#csrf_token").val()
+        $.ajaxSetup({
+        headers: {
+            'X-CSRFToken':csrf_token
+            }
+        });
+
+        $.ajax({
+                url:"/creacion/",
+                method: "POST",
+                data:formData,
+                success: function(data){
+                    console.log(data);
+                    var nombre=$('#agregarplanta input[name="nombre"]' ).text();
+                    
+                    M.toast({html: 'xml generado exitosamente!!'});
+                    location.reload();     
+                },
+                    
+                error: function(data){
+                    console.log("error");
+                }
+            }); 
+    }
+</script>
+{% endblock js %}
